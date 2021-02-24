@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 
 import userReducer from "./user/userReducer";
-import myReducer from '../store/reducer'
+import errorReducer from "./errorReducer";
+import loadingReducer from "./loadingReducer";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  proba: null,
+  error: errorReducer,
+  loading: loadingReducer,
 });
 
 export default rootReducer;
