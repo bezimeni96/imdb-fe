@@ -82,3 +82,13 @@ export const fetchGenreTypes = async () => {
     throw error.data;
   }
 };
+
+export const fetchMovies = async () => {
+  try {
+    const response = await fetch(`${URL}movies/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error.data;
+  }
+};
