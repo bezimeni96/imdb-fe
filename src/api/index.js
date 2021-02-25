@@ -71,3 +71,14 @@ export const createMovie = async (movie) => {
     throw error.data;
   }
 };
+
+export const fetchGenreTypes = async () => {
+  try {
+    const response = await fetch(`${URL}create-movie/`);
+    const data = await response.json();
+    const types = data.message.map(type => type[0]);
+    return types;
+  } catch (error) {
+    throw error.data;
+  }
+};

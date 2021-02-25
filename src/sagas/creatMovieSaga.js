@@ -17,8 +17,8 @@ function* handleCreateMovieSaga(action) {
 }
 
 // watcher saga
-function* watchUserFetch() {
+function* watchCreateMovie() {
   yield takeLatest(CREATE_MOVIE_REQUEST, handleCreateMovieSaga);
 }
 
-export default watchUserFetch;
+export default watchCreateMovie;

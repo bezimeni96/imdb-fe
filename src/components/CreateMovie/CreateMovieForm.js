@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Formik, Form, useField, Field } from "formik";
 import * as Yup from "yup";
@@ -58,7 +58,11 @@ const GENRE_TYPES = [
   "Western",
 ];
 
-const CreateMoviForm = (props) => (
+const CreateMoviForm = (props) => {
+  useEffect(() => {
+    props.fetchGenreTypes()
+  }, []);
+  return (
   <Formik
     initialValues={{
       title: "",
@@ -113,7 +117,7 @@ const CreateMoviForm = (props) => (
       <br /> <br />
       <MySelect label="Genre" name="genre">
         <option value="">Select a genre type</option>
-        {GENRE_TYPES.map((genre, index) => {
+        {props.movie !== null && props.movie.GENRE_TYPES.map((genre, index) => {
           return (
             <option key={index} value={genre}>
               {genre}
@@ -128,16 +132,19 @@ const CreateMoviForm = (props) => (
       <button type="submit">Create</button>
     </Form>
   </Formik>
-);
+)};
 
-const mapStateToProps = ({ error }) => ({
+const mapStateToProps = ({ error, movie }) => ({
   error,
+  movie,
 });
 
 const mapDispatchToProps = (dispatch) => {
   return {
     createMovie: (payload) =>
       dispatch({ type: "CREATE_MOVIE_REQUEST", payload: payload }),
+    fetchGenreTypes: () =>
+      dispatch({ type: "FETCH_GENRE_REQUEST"})
   };
 };
 
