@@ -1,4 +1,4 @@
-import { CREATE_MOVIE_SUCCESS, FETCH_GENRE_SUCCESS, FETCH_MOVIES_SUCCESS } from "./movieTypes";
+import { CREATE_MOVIE_SUCCESS, FETCH_GENRE_SUCCESS, FETCH_MOVIES_SUCCESS, FETCH_SINGLE_MOVIE_SUCCESS } from "./movieTypes";
 
 const movieReducer = (state = null, action) => {
   switch (action.type) {
@@ -21,6 +21,10 @@ const movieReducer = (state = null, action) => {
         next: action.payload.next,
       }
     }
+    case FETCH_SINGLE_MOVIE_SUCCESS:
+      return {
+        single_movie: {...action.payload}
+      }
 
     default:
       return state;

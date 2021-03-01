@@ -5,6 +5,7 @@ import registerSaga from "./registerSaga";
 import createMovieSaga from "./creatMovieSaga";
 import fetchGenreTypesSaga from "./fetchGenreTypesSaga";
 import fetchMoviesSaga from "./fetchMoviesSaga";
+import fetchSingleMovieSaga from "./fetchSingleMovie";
 
 export default function* rootSaga() {
   yield all([
@@ -13,5 +14,6 @@ export default function* rootSaga() {
     createMovieSaga(),
     fetchGenreTypesSaga(),
     fetchMoviesSaga(),
+    fetchSingleMovieSaga()
   ]);
 }

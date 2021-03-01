@@ -92,3 +92,13 @@ export const fetchMovies = async (link = `${URL}movies/`) => {
     throw error.data;
   }
 };
+
+export const fetchSingleMovie = async (pk) => {
+  try {
+    const response = await fetch(`${URL}movies/${pk}/`);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    throw error.data;
+  }
+};

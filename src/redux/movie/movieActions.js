@@ -8,6 +8,9 @@ import {
   FETCH_MOVIES_REQUEST,
   FETCH_MOVIES_SUCCESS,
   FETCH_MOVIES_FAILURE,
+  FETCH_SINGLE_MOVIE_REQUEST,
+  FETCH_SINGLE_MOVIE_SUCCESS,
+  FETCH_SINGLE_MOVIE_FAILURE,
 } from "./movieTypes";
 
 export const createMovieRequest = () => {
@@ -66,6 +69,26 @@ export const fetchMoviesSuccess = (payload) => {
 export const fetchMoviesFailure = (error) => {
   return {
     type: FETCH_MOVIES_FAILURE,
+    payload: error,
+  };
+};
+
+export const fetchSingleMovieRequest = () => {
+  return {
+    type: FETCH_SINGLE_MOVIE_REQUEST,
+  }
+}
+
+export const fetchSingleMovieSuccess = (movie) => {
+  return {
+    type: FETCH_SINGLE_MOVIE_SUCCESS,
+    payload: movie,
+  };
+};
+
+export const fetchSingleMovieFailure = (error) => {
+  return {
+    type: FETCH_SINGLE_MOVIE_FAILURE,
     payload: error,
   };
 };

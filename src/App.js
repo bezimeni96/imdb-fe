@@ -12,6 +12,7 @@ import LoginPage from "./components/Login/LoginPage";
 import RegisterPage from "./components/Register/RegisterPage";
 import CreateMoviePage from "./components/CreateMovie/CreateMoviePage";
 import MovieList from "./components/Movie/MovieList";
+import SingleMovie from "./components/Movie/SingleMovie";
 
 // const loggedIn = props.user;
 
@@ -53,6 +54,11 @@ function App(props) {
             <CreateMoviePage />
           )}
         </Route>
+        <Route path="/movies/:pk" render={({match}) => (
+          <SingleMovie
+            pk={match.params.pk}
+          />
+        )}/>
       </Switch>
     </Router>
   );
