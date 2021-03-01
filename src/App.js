@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect,
 } from "react-router-dom";
 
@@ -12,6 +11,7 @@ import { connect } from "react-redux";
 import LoginPage from "./components/Login/LoginPage";
 import RegisterPage from "./components/Register/RegisterPage";
 import CreateMoviePage from "./components/CreateMovie/CreateMoviePage";
+import MovieList from "./components/Movie/MovieList";
 
 // const loggedIn = props.user;
 
@@ -43,9 +43,12 @@ function App(props) {
             <RegisterPage />
           )}
         </Route>
+        <Route exact path="/movies">
+          <MovieList />
+        </Route>
         <Route exact path="/create-movie">
           {props.loading === "created success" ? (
-            <Redirect to="/" />
+            <Redirect to="/movies" />
           ) : (
             <CreateMoviePage />
           )}
