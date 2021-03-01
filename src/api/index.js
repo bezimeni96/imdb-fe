@@ -76,16 +76,16 @@ export const fetchGenreTypes = async () => {
   try {
     const response = await fetch(`${URL}create-movie/`);
     const data = await response.json();
-    const types = data.message.map(type => type[0]);
+    const types = data.message.map((type) => type[0]);
     return types;
   } catch (error) {
     throw error.data;
   }
 };
 
-export const fetchMovies = async () => {
+export const fetchMovies = async (link = `${URL}movies/`) => {
   try {
-    const response = await fetch(`${URL}movies/`);
+    const response = await fetch(link);
     const data = await response.json();
     return data;
   } catch (error) {

@@ -16,7 +16,9 @@ const movieReducer = (state = null, action) => {
     case FETCH_MOVIES_SUCCESS: {
       return {
         ...state,
-        list: [...action.payload]
+        list: [...action.payload.results],
+        previous: action.payload.previous,
+        next: action.payload.next,
       }
     }
 

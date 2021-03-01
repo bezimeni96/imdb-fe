@@ -7,10 +7,10 @@ import {
   fetchMoviesFailure,
 } from "../redux/movie/movieActions";
 
-function* handlefetchMoviesSaga() {
+function* handlefetchMoviesSaga(action) {
   try {
-    const movies = yield call(fetchMovies);
-    yield put(fetchMoviesSuccess(movies));
+    const response = action.payload ? yield call(fetchMovies, action.payload.link) : yield call(fetchMovies);
+    yield put(fetchMoviesSuccess(response));
   } catch (error) {
     yield put(fetchMoviesFailure(error));
   }
