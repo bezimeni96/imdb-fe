@@ -9,7 +9,7 @@ import {
 
 function* handlefetchMoviesSaga(action) {
   try {
-    const response = action.payload ? yield call(fetchMovies, action.payload.link) : yield call(fetchMovies);
+    const response = action.payload ? yield call(fetchMovies, action.payload) : yield call(fetchMovies);
     yield put(fetchMoviesSuccess(response));
   } catch (error) {
     yield put(fetchMoviesFailure(error));

@@ -83,9 +83,11 @@ export const fetchGenreTypes = async () => {
   }
 };
 
-export const fetchMovies = async (link = `${URL}movies/`) => {
+export const fetchMovies = async (props = null) => {
+  const link = props !== null && props.link ? props.link : '';
+  const title = props !== null && props.title ? props.title : ''
   try {
-    const response = await fetch(link);
+    const response = await fetch(link ? link : `${URL}movies/?title=${title}`);
     const data = await response.json();
     return data;
   } catch (error) {

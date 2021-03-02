@@ -2,13 +2,15 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import MovieCard from "./MovieCard";
+import SearchField from "./SearchField";
 
-const MovieList = ({ ...props }) => {
+const MovieList = (props) => {
   useEffect(() => {
     props.fetchMovies();
   }, []);
   return (
     <>
+      <SearchField fetchMovies={props.fetchMovies} />
       <div
         style={{
           display: "flex",
@@ -18,9 +20,13 @@ const MovieList = ({ ...props }) => {
       >
         {props.movie !== null &&
           props.movie.list &&
+          props.movie.list.length > 0 &&
           props.movie.list.map((movie) => (
             <MovieCard key={movie.pk} movie={movie} />
           ))}
+        {props.movie !== null && props.movie.list.length === 0 && (
+          <p>There is no movies</p>
+        )}
       </div>
       <div>
         {props.movie !== null && props.movie.previous !== null && (

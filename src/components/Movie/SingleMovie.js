@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-const SingleMovie = ({...props}) => {
+const SingleMovie = (props) => {
   useEffect(() => {
     props.fetchMovie(props.pk)
   }, []);
@@ -16,7 +16,7 @@ const SingleMovie = ({...props}) => {
       >
         Go to movies
       </Link>
-      {props.movie !== null && <div>
+      {props.movie !== null && props.movie.single_movie && <div>
         <h1>{props.movie.single_movie.title}</h1>
         <p>Genre: {props.movie.single_movie.genre}</p>
         <p>Description: <br />

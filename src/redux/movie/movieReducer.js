@@ -23,6 +23,7 @@ const movieReducer = (state = null, action) => {
     }
     case FETCH_SINGLE_MOVIE_SUCCESS:
       return {
+        ...state,
         single_movie: {...action.payload}
       }
 
